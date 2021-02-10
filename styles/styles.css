@@ -1,25 +1,56 @@
+/* RESET ------------------------- */
 *{
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
 }
 
-table{
-    border: 1px solid black;
-    text-align: center;
+/* BASICS ------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;400;800&display=swap');
+
+:root{
+    --fuenteLiga: 'Work Sans', sans-serif;
+    --negroLiga:rgb(20, 20, 20);
+    --grisLiga: #dedede;
 }
 
-thead tr{
-    font-size: 1.4em;
-    font-weight: bold;
+/* TABLES ------------------------- */
+
+table{
+    width: 90%;
+    margin: 20px auto;
+    font-family: var(--fuenteLiga);
+    border-collapse: collapse;
+}
+
+thead th{
+    height: 70px;
+    color: white;
+    font-size: 1em;
+    background-color: var(--negroLiga);
+    position: sticky;
+    top: 0;
+}
+
+tr:nth-child(2n){
+    background-color: var(--grisLiga);
 }
 
 td{
-    border: 1px solid black;
-    padding: 10px;
+    padding: 20px 0px;
+    text-align: center;
+    font-weight: 300;
 }
 
-th{
-    border: 1px solid black;
-    padding: 10px;
+.equipoLocal{
+    padding: 30px 0px;
+}
+
+.equipoLocal > .equipoLocalEscudo {
+    width: 30px;
+}
+
+.equipoVisitante > .equipoVisitanteEscudo{
+    width: 30px;
 }
