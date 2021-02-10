@@ -1,17 +1,4 @@
-
-let local = dataMatches.matches;
-
-/* Consulta de datos
-function datosPartidos(partidos){
-    for(let i = 0; i < partidos.length; i++){
-        console.log(partidos[i].homeTeam.name);
-        console.log(partidos[i].awayTeam.name);
-        console.log(partidos[i].score.fullTime.homeTeam," - ",partidos[i].score.fullTime.awayTeam);
-        console.log(partidos[i].utcDate);
-    }
-}
-datosPartidos(local);
-*/
+let matches = dataMatches.matches;
 
 function crearTabla(partidos){
 
@@ -46,4 +33,4 @@ function crearTabla(partidos){
         tabla.appendChild(tr);
     }
 }
-crearTabla(local);
+crearTabla(matches);
