@@ -1,36 +1,43 @@
-/* RESET ------------------------- */
+
+/* Reset ---------------------------- */
+
 *{
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
 }
 
-/* BASICS ------------------------- */
+/* Fuentes y Custom Properties ------------------------- */
 
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;400;800&display=swap');
 
 :root{
     --fuenteLiga: 'Work Sans', sans-serif;
-    --negroLiga:rgb(20, 20, 20);
+    --negroLiga:#212529;
     --grisLiga: #dedede;
 }
 
-/* TABLES ------------------------- */
+/* Tablas ------------------------- */
 
-table{
-    width: 90%;
+.table{
     margin: 20px auto;
     font-family: var(--fuenteLiga);
+    border: 5px solid var(--negroLiga);
     border-collapse: collapse;
 }
 
-thead th{
-    height: 70px;
-    color: white;
-    font-size: 1em;
+
+thead{
     background-color: var(--negroLiga);
-    position: sticky;
-    top: 0;
+}
+
+th{
+    height: 80px;
+    color: white;
+    font-size: 1.2em;
+    font-family: var(--fuenteLiga);
+    background-color: var(--negroLiga);
+    text-align: center;
 }
 
 tr:nth-child(2n){
@@ -40,17 +47,22 @@ tr:nth-child(2n){
 td{
     padding: 20px 0px;
     text-align: center;
-    font-weight: 300;
 }
 
-.equipoLocal{
-    padding: 30px 0px;
+/* Footer ---------------------------- */
+
+.footerDown{
+    clear: both;
+    width: 100%;
+    height: auto;
 }
 
-.equipoLocal > .equipoLocalEscudo {
-    width: 30px;
+.socialFooter{
+    text-align: center;
+    margin: 40px auto;
 }
 
-.equipoVisitante > .equipoVisitanteEscudo{
-    width: 30px;
+.redSocial{
+    text-align: center;
+    color: white;
 }
