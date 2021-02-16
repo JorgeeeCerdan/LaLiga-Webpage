@@ -4,28 +4,93 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="pictures/laliga-v-negativo-monocolor-300x300.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/styles/styles.css">
     <title>LaLiga Webpage - Clasificación</title>
 </head>
 <body>
-    <table id="tablaClasificacion">
-        <thead>
-            <tr>
-                <th>Clasificación</th>
-                <th>Escudo</th>
-                <th>Equipo</th>
-                <th>Jugados</th>
-                <th>Ganados</th>
-                <th>Empatados</th>
-                <th>Perdidos</th>
-                <th>Pnts</th>
-                <th>GF</th>
-                <th>GC</th>
-                <th>DG</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+
+  <!-- Nav -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a href="index.html"><img src="/pictures/laliga-h-negativo-monocolor-300x300.png" alt="logoLiga"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+          <li class="nav-item ">
+            <a class="nav-link" href="index.html">| Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="standings.html">| Clasificación</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="matches.html">| Partidos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="resultados.html">| Resultados</a>
+          </li>
+        </ul>
+    </div>
+  </nav>
+    
+  <!-- Migas de pan -->
+  <div class="container mt-4">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+        <li class="breadcrumb-item"><a href="#">Clasificación</a></li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- Tabla -->
+  <div class="container table-responsive">
+      <table id="tablaClasificacion" class="table">
+          <thead>
+              <tr>
+                  <th>Posicion</th>
+                  <th>Escudo</th>
+                  <th>Equipos</th>
+                  <th>Jugados</th>
+                  <th>Ganados</th>
+                  <th>Empatados</th>
+                  <th>Perdidos</th>
+                  <th>Pnts</th>
+                  <th>GF</th>
+                  <th>GC</th>
+                  <th>DG</th>
+              </tr>
+          </thead>
+          <tbody></tbody>
+      </table>
+  </div>
+
+  <!-- Footer -->
+  <footer class="container-fluid mt-5 bg-dark footerDown">
+    <div class="container">
+      <div class="row">
+          <div class="col-3 bg-dark socialFooter">
+                  <i class="bi bi-facebook redSocial"></i>
+              </div>
+              <div class="col-3 bg-dark socialFooter">
+                  <i class="bi bi-instagram redSocial"></i>
+              </div>
+              <div class="col-3 bg-dark socialFooter">
+                  <i class="bi bi-linkedin redSocial"></i>
+              </div>
+              <div class="col-3 bg-dark socialFooter">
+                  <i class="bi bi-github redSocial"></i>
+              </div>
+              </div>
+          </div>
+      </div>
+  </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     <script src="/scripts/dataMatches.js"></script>
     <script src="/scripts/dataStandings.js"></script>
     <script src="/scripts/standings.js" ></script>

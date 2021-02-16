@@ -1,55 +1,47 @@
 let matches = dataMatches.matches;
 
-for(let i = 0; i<matches.length; i++){
-    console.log(matches[i].homeTeam.id);
-}
+function tablaPartidos(partidos){
 
-function crearTabla(partidos){
-    let tabla = document.getElementById("tabla");
+    let tablaPartidos = document.getElementById("tablaPartidos");
 
-    for(let i = 0; i < partidos.length; i++){
+    for(let i = 0; i < matches.length; i++){
         const tr = document.createElement("tr");
 
-        let fecha = new Date(partidos[i].utcDate);
-        let fechaPartido = document.createElement("td");
-        fechaPartido.className = "fechaPartido";
-        fechaPartido.textContent = fecha.toLocaleString();
-        tr.appendChild(fechaPartido)
+        let escudoLocal = document.createElement("img");
+        escudoLocal.classList.add("escudoId");
+        escudoLocal.setAttribute("src","https://crests.football-data.org/" + partidos[i].homeTeam.id + ".svg");
+        escudoLocal.setAttribute("alt","Logo Equipo");
+        
+        let escudoVisitante = document.createElement("img");
+        escudoVisitante.classList.add("escudoId");
+        escudoVisitante.setAttribute("src","https://crests.football-data.org/" + partidos[i].awayTeam.id + ".svg");
+        escudoVisitante.setAttribute("alt","Logo Equipo");
 
-        let equipoLocal = document.createElement("td");
-        equipoLocal.className = "equipoLocal";
-        equipoLocal.textContent = partidos[i].homeTeam.name;
-        tr.appendChild(equipoLocal)
+        let fechaPartidos = new Date (partidos[i].utcDate);
 
-        let recogidaEscudoLocal = matches[i].homeTeam.id;
-        let recogidaEscudoVisitante = matches[i].awayTeam.id;
+        let resultados = partidos[i].score.fullTime.homeTeam + " - " + partidos[i].score.fullTime.awayTeam;
+        if(resultados === "null - null"){
+            resultados = "Aplazado";
+            console.log(resultados)
+        }else{
+            resultados.textContent = partidos[i].score.fullTime.homeTeam + " - " + partidos[i].score.fullTime.awayTeam;
+        }
 
-        let equipoLocalEscudo = document.createElement("img");
-        equipoLocalEscudo.setAttribute("src", "https://crests.football-data.org/" + recogidaEscudoLocal + ".svg");
-        equipoLocalEscudo.setAttribute("alt", "Escudo equipo");
-        equipoLocalEscudo.classList.add("equipoLocalEscudo");
-        equipoLocal.appendChild(equipoLocalEscudo)
+        let datosPartidos = [
+            fechaPartidos.toLocaleDateString(),
+            escudoLocal,
+            partidos[i].homeTeam.name,
+            escudoVisitante,
+            partidos[i].awayTeam.name,
+            resultados,
+        ]
 
-        let equipoVisitante = document.createElement("td");
-        equipoVisitante.className = "equipoVisitante";
-        equipoVisitante.textContent = partidos[i].awayTeam.name;
-        tr.appendChild(equipoVisitante)
-
-        let equipoVisitanteEscudo = document.createElement("img");
-        equipoVisitanteEscudo.setAttribute("src", "https://crests.football-data.org/" + recogidaEscudoVisitante + ".svg");
-        equipoVisitanteEscudo.setAttribute("alt", "Escudo equipo");
-        equipoVisitanteEscudo.classList.add("equipoVisitanteEscudo");
-        equipoVisitante.appendChild(equipoVisitanteEscudo)
-
-        let resultadoPartido = document.createElement("td");
-        resultadoPartido.className = "resultadoPartido";
-        resultadoPartido.textContent = partidos[i].score.fullTime.homeTeam + " - " + partidos[i].score.fullTime.awayTeam;
-        tr.appendChild(resultadoPartido)
-            if(partidos[i].score.fullTime.homeTeam == null){
-                resultadoPartido.textContent = "Aplazado";
-            }
-
-        tabla.appendChild(tr);
+        for(let j = 0; j < datosPartidos.length; j++){
+            let td = document.createElement("td");
+            td.append(datosPartidos[j])
+            tr.appendChild(td)
+            tablaPartidos.appendChild(tr)
+        }
     }
 }
-crearTabla(matches);
+tablaPartidos(matches);

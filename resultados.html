@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="pictures/laliga-v-negativo-monocolor-300x300.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link rel="stylesheet" href="/styles/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <title>LaLiga Webpage - Inicio</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+    <title>LaLiga Webpage - Resultados</title>
 </head>
 <body>
-    
+
   <!-- Nav -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
@@ -21,7 +21,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-          <li class="nav-item ">
+          <li class="nav-item">
             <a class="nav-link" href="index.html">| Inicio</a>
           </li>
           <li class="nav-item">
@@ -36,34 +36,47 @@
         </ul>
     </div>
   </nav>
-
+    
   <!-- Migas de pan -->
   <div class="container mt-4">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-        <li class="breadcrumb-item"><a href="#">Partidos</a></li>
+        <li class="breadcrumb-item"><a href="#">Resultados</a></li>
       </ol>
     </nav>
   </div>
 
-  <!-- Tabla -->
+  <!-- Tabla top 5 Equipos Goleadores -->
   <div class="container table-responsive">
-      <table id="tablaPartidos" class="table table-striped table-hover">
+      <table id="tablaResultadosGoles" class="table">
           <thead>
               <tr>
-                  <th>Fecha</th>
-                  <th>Equipo Local</th>
-                  <th></th>
-                  <th>Equipo Visitante</th>
-                  <th></th>
-                  <th>Resultado</th>
+                <th>Equipos</th>
+                <th>Goles</th>
+                <th>Partidos</th>
+                <th>Media goles a favor</th>
               </tr>
           </thead>
           <tbody></tbody>
       </table>
   </div>
-    
+
+  <!-- Tabla top 5 Equipos Menos Goleados -->
+  <div class="container table-responsive">
+      <table id="tablaMenosGolesEnContraComoVisitante" class="table">
+          <thead>
+              <tr>
+                <th>Equipos</th>
+                <th>Escudo</th>
+                <th>Partidos</th>
+                <th>Menos goles recibidos como visitante</th>
+              </tr>
+          </thead>
+          <tbody></tbody>
+      </table>
+  </div>
+
   <!-- Footer -->
   <footer class="container-fluid mt-5 bg-dark footerDown">
     <div class="container">
@@ -88,6 +101,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
   <script src="/scripts/dataMatches.js"></script>
   <script src="/scripts/dataStandings.js"></script>
-  <script src="/scripts/matches.js" ></script>
+  <script src="/scripts/stats.js"></script>
+  <script src="/scripts/topMediaGoles.js"></script>
+  <script src="/scripts/topMenosGolesEnContraVisitante.js"></script>
 </body>
 </html>
