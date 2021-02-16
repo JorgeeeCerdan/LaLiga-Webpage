@@ -77,63 +77,9 @@ function dataMayorMediaGoles(partidos){
         let mediaObjeto = {
             avg: media.toFixed(3)
         }
-        Object.assign(estadisticas[k], mediaObjeto)
+        Object.assign(estadisticas[k], mediaObjeto);
     }
 
-    console.log(estadisticas)
-
+    // console.log(estadisticas)
 }
 dataMayorMediaGoles(dataMatches.matches);
-
-// TABLA EQUIPOS CON MENOS GOLES EN CONTRA COMO VISITENTE
-function dataMenosGolesVisitante(partidos){
-    // 0. Crear función que va calcular las estadísticas, recibiendo como param el array de partidos
-    // 1. Crear array vacía (será array de objetos)
-    let estadisticasDos = [];
-
-    // 2. Iterar por todos los partidos
-    for(let i = 0; i < partidos.length; i++){
-        
-        // Obtendremos los datos a traves del estado de los partidos. porque solo pueden tener dos opciones: finalizado o a la espera. (boolean)
-        let statusMatch = partidos[i].status;
-
-        // 3. Condición: si el partido no está acabado, no seguir y mirar siguiente partido
-        // CUANDO NO ES FINISHED NO LEE LA LINEA 15!
-        if(statusMatch !== "FINISHED"){
-            // Cumplida la condicion… recogemos los datos de los finalizados         
-            continue
-        }
-        let equipoHomeGoals = partidos[i].score.fullTime.homeTeam;
-        let equipoAwayId = partidos[i].awayTeam.id;
-        let equipoAwayName = partidos[i].awayTeam.name;
-
-        // 7. Hacer exactamente lo mismo a partir del punto 4, pero con awayTeam
-        let awayTeamEncontrado;
-        for(let j = 0; j < estadisticasDos.length; j++){
-            if(estadisticasDos[j].id === equipoAwayId){
-                awayTeamEncontrado = estadisticasDos[j]
-            }
-        }
-        // console.log(equipoHomeName, awayTeamEncontrado)
-
-        if(awayTeamEncontrado == undefined){
-            // console.log("añadimos nuevo equipo")
-            estadisticasDos.push({
-                id:equipoAwayId,
-                name:equipoAwayName,
-                goals:equipoHomeGoals,
-                matches: 1
-            })
-        }else{
-            // console.log("modificamos equipo existente")
-            awayTeamEncontrado.goals += equipoHomeGoals;
-            awayTeamEncontrado.matches++
-        }
-        
-    }
-
-    console.log(estadisticasDos)
-
-}
-dataMenosGolesVisitante(dataMatches.matches);
-

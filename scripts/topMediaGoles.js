@@ -1,3 +1,6 @@
+// TOP 5 EQUIPOS CON MAYOR MEDIA DE GOLES POR PARTIDO
+dataMayorMediaGoles(dataMatches.matches);
+
 function dataMayorMediaGoles(partidos){
     let estadisticas = [];
 
@@ -34,7 +37,7 @@ function dataMayorMediaGoles(partidos){
 
         let awayTeamEncontrado;
         for(let j = 0; j < estadisticas.length; j++){
-            if(estadisticas[j].id === equipoHomeId){
+            if(estadisticas[j].id === equipoAwayId){
                 awayTeamEncontrado = estadisticas[j]
             }
         }
@@ -58,37 +61,34 @@ function dataMayorMediaGoles(partidos){
             avg: media.toFixed(3)
         }
         Object.assign(estadisticas[k], mediaObjeto)
+        // a es mayor, b es menor. Por lo tanto b.avg - a.avg 
+        // Ordena de menor a mayor
+        estadisticas.sort((a,b) => b.avg - a.avg)
     }
 
-    console.log(estadisticas)
-
+    // console.log(estadisticas)
+    tablaMayorMediaGoles(estadisticas)
 }
-dataMayorMediaGoles(dataMatches.matches);
-
-
-// --------------------------------------------------
-
 
 function tablaMayorMediaGoles(estadisticas){
     let tablaMayorMediaGoles = document.getElementById("tablaResultadosGoles");
+    let estadisticasTop5 = estadisticas.slice(0, 5);
 
-    for(let t = 0; t < estadisticas.length; t++){
+    for(let t = 0; t < estadisticasTop5.length; t++){
         const tr = document.createElement("tr");
 
-        let infotabla = estadisticas[t];
         let datosTabla = [
-            infotabla.id,
-            infotabla.name,
-            infotabla.goals
+            estadisticasTop5[t].name,
+            estadisticasTop5[t].goals,
+            estadisticasTop5[t].matches,
+            estadisticasTop5[t].avg,
         ]
 
         for(let r = 0; r < datosTabla.length; r++){
             let td = document.createElement("td");
-            td.append(datostabla[r]);
+            td.append(datosTabla[r]);
             tr.appendChild(td);
             tablaMayorMediaGoles.appendChild(tr);
         }
-
     }
 }
-tablaMayorMediaGoles(estadisticas);

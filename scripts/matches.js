@@ -8,16 +8,14 @@ function tablaPartidos(partidos){
         const tr = document.createElement("tr");
 
         let escudoLocal = document.createElement("img");
-        escudoLocal.classList.add("escudoLocal");
+        escudoLocal.classList.add("escudoId");
         escudoLocal.setAttribute("src","https://crests.football-data.org/" + partidos[i].homeTeam.id + ".svg");
         escudoLocal.setAttribute("alt","Logo Equipo");
-        escudoLocal.style.width = "50px"
         
         let escudoVisitante = document.createElement("img");
-        escudoVisitante.classList.add("escudoVisitante");
+        escudoVisitante.classList.add("escudoId");
         escudoVisitante.setAttribute("src","https://crests.football-data.org/" + partidos[i].awayTeam.id + ".svg");
         escudoVisitante.setAttribute("alt","Logo Equipo");
-        escudoVisitante.style.width = "50px"
 
         let fechaPartidos = new Date (partidos[i].utcDate);
 

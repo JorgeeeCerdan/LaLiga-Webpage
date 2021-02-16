@@ -17,6 +17,12 @@
     --grisLiga: #dedede;
 }
 
+/* IMG Escudos ------------------------- */
+
+.escudoId{
+    width: 50px;
+}
+
 /* Tablas ------------------------- */
 
 .table{
