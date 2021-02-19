@@ -1,25 +1,91 @@
+
+/* Reset ---------------------------- */
+
 *{
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
 }
 
-table{
-    border: 1px solid black;
-    text-align: center;
+/* Fuentes y Custom Properties ------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;400;800&display=swap');
+
+:root{
+    --fuenteLiga: 'Work Sans', sans-serif;
+    --negroLiga:#212529;
+    --grisLiga: #dedede;
 }
 
-thead tr{
-    font-size: 1.4em;
-    font-weight: bold;
+/* IMG Escudos ------------------------- */
+
+.escudoId{
+    width: 50px;
 }
 
-td{
-    border: 1px solid black;
-    padding: 10px;
+/* Tablas ------------------------- */
+
+.table{
+    margin: 20px auto;
+    font-family: var(--fuenteLiga);
+    border: 5px solid var(--negroLiga);
+    border-collapse: collapse;
+}
+
+
+thead{
+    background-color: var(--negroLiga);
 }
 
 th{
-    border: 1px solid black;
-    padding: 10px;
+    height: 80px;
+    color: white;
+    font-size: 1.2em;
+    font-family: var(--fuenteLiga);
+    background-color: var(--negroLiga);
+    text-align: center;
+}
+
+tr:nth-child(2n){
+    background-color: var(--grisLiga);
+}
+
+td{
+    padding: 20px 0px;
+    text-align: center;
+    border: none;
+}
+
+/* Form ---------------------------- */
+
+input[type="text"] {  
+    text-align: center; 
+} 
+
+/* Footer ---------------------------- */
+
+.footerDown{
+    clear: both;
+    width: 100%;
+    height: auto;
+}
+
+.socialFooter{
+    text-align: center;
+    margin: 40px auto;
+}
+
+.redSocial{
+    text-align: center;
+    color: white;
+}
+
+
+/* Alerts ---------------------------- */
+
+#alertText{
+    display: none;
+}
+#alertStatus{
+    display: none;
 }
