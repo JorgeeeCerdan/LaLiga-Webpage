@@ -47,6 +47,40 @@
     </nav>
   </div>
 
+  
+  <!-- Buscador -->
+  <div class="container-fluid">
+    <div class="container">
+      <div class="alert alert-danger text-center mb-3" id="alertText" role="alert">
+        ¡Por favor! Escriba el nombre del equipo que quiera buscar.
+      </div>
+      <form action="">
+          <div class="row">            
+          <div class="form-group col-12 text-center">
+            <label for="textoBuscar">Buscador de equipos</label>
+            <input type="text" id="textoBuscar" class="w-100" placeholder="Introduce el nombre aquí para obtener más informacion " class="text-center align-center" required>
+          </div>
+          <div class="form-group  col-12 text-center mt-3">
+            <label for="partidoGanado">Partidos ganados</label>
+            <input type="radio" name="estadoPartido" value="Ganados" id="partidoGanado"></input>
+            <label for="partidoEmpatado">Partidos empatados</label>
+            <input type="radio" name="estadoPartido" value="Empatados" id="partidoEmpatado"></input>
+            <label for="PartidoPerdido">Partidos perdidos</label>
+            <input type="radio" name="estadoPartido" value="Perdidos" id="partidoPerdido"></input>
+            <label for="PartidoAplazado">Partidos aplazados</label>
+            <input type="radio" name="estadoPartido" value="Aplazados" id="partidoAplazado"></input>
+          </div>
+          <div class="alert alert-danger text-center mt-3" id="alertStatus" role="alert">
+            ¡Por favor! Seleccione el estado del partido que quiera ver.
+          </div>
+          <div class="form-group  col-sm-12 col-md-12 col-lg-12">
+            <button id="buscarEquipo" class="btn btn-primary w-100 p-2 mt-3">Enviar petición</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <!-- Tabla -->
   <div class="container table-responsive">
       <table id="tablaPartidos" class="table table-striped table-hover">
@@ -60,7 +94,7 @@
                   <th>Resultado</th>
               </tr>
           </thead>
-          <tbody></tbody>
+          <tbody id="tbody"></tbody>
       </table>
   </div>
     
