@@ -31,7 +31,7 @@
             <a class="nav-link" href="matches.html">| Partidos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="resultados.html">| Resultados</a>
+            <a class="nav-link" href="stats.html">| Estadisticas</a>
           </li>
         </ul>
     </div>
@@ -41,43 +41,68 @@
   <div class="container mt-4">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-        <li class="breadcrumb-item"><a href="#">Partidos</a></li>
+        <li class="breadcrumb-item">Inicio</li>
+        <li class="breadcrumb-item">Partidos</li>
       </ol>
     </nav>
   </div>
 
-  
   <!-- Buscador -->
   <div class="container-fluid">
     <div class="container">
+      <!-- Alerta falta texto input -->
       <div class="alert alert-danger text-center mb-3" id="alertText" role="alert">
-        ¡Por favor! Escriba el nombre del equipo que quiera buscar.
+        <p><b>¡Por favor!</b> Escriba el nombre del equipo que quiera buscar.</p>
       </div>
+
+      <!-- Formulario busqueda por filtrado -->
       <form action="">
-          <div class="row">            
+        <!-- Input text Equipo a buscar -->
           <div class="form-group col-12 text-center">
             <label for="textoBuscar">Buscador de equipos</label>
-            <input type="text" id="textoBuscar" class="w-100" placeholder="Introduce el nombre aquí para obtener más informacion " class="text-center align-center" required>
+            <input type="text" id="textoBuscar" class="w-100 p-2 mt-1" placeholder="Escribe tu equipo" class="text-center align-center" onfocus="this.value=''">
           </div>
-          <div class="form-group  col-12 text-center mt-3">
-            <label for="partidoGanado">Partidos ganados</label>
-            <input type="radio" name="estadoPartido" value="Ganados" id="partidoGanado"></input>
-            <label for="partidoEmpatado">Partidos empatados</label>
-            <input type="radio" name="estadoPartido" value="Empatados" id="partidoEmpatado"></input>
-            <label for="PartidoPerdido">Partidos perdidos</label>
-            <input type="radio" name="estadoPartido" value="Perdidos" id="partidoPerdido"></input>
-            <label for="PartidoAplazado">Partidos aplazados</label>
-            <input type="radio" name="estadoPartido" value="Aplazados" id="partidoAplazado"></input>
+
+          <!-- Radio buttons Estado del partido -->
+          <div class="container text-center mt-3 mb-3" role="group" aria-label="Basic radio toggle button group">
+            <!-- Ganados -->
+            <input type="radio" class="btn-check " name="estadoPartido" id="partidoGanado" value="Ganados" autocomplete="off">
+            <label class="btn btn-outline-success mt-2" for="partidoGanado">Ganados</label>
+            <!-- Empatados -->
+            <input type="radio" class="btn-check" name="estadoPartido" id="partidoEmpatado" value="Empatados" autocomplete="off">
+            <label class="btn btn-outline-warning mt-2" for="partidoEmpatado">Empatados</label>
+            <!-- Perdidos -->
+            <input type="radio" class="btn-check" name="estadoPartido" id="partidoPerdido" value="Perdidos" autocomplete="off">
+            <label class="btn btn-outline-danger mt-2" for="partidoPerdido">Perdidos</label>
+            <!-- Aplazados -->
+            <input type="radio" class="btn-check" name="estadoPartido" id="partidoAplazado" value="Aplazados" autocomplete="off">
+            <label class="btn btn-outline-primary mt-2" for="partidoAplazado">Aplazados</label>
           </div>
-          <div class="alert alert-danger text-center mt-3" id="alertStatus" role="alert">
-            ¡Por favor! Seleccione el estado del partido que quiera ver.
+          
+          <!-- Alerta falta seleccion de estado del partido -->
+          <div class="alert alert-primary text-center mt-2" id="alertStatus" role="alert">
+            <p>A continuación le mostraremos todos los partidos del equipo elegido.<br><b>Para una busqueda más precisa, seleccione un estado del partido</b></p> 
           </div>
+
+          <!-- Boton reset -->
           <div class="form-group  col-sm-12 col-md-12 col-lg-12">
-            <button id="buscarEquipo" class="btn btn-primary w-100 p-2 mt-3">Enviar petición</button>
+            <button type="button" id="borrarPeticion" class="btn btn-link text-decoration-none text-muted w-100">Borrar busqueda</button>
           </div>
+          
+          <!-- Boton enviar -->
+          <div class="form-group  col-sm-12 col-md-12 col-lg-12">
+            <button id="buscarEquipo" class="btn btn-dark w-100 p-2 mt-3 mb-2">Enviar petición</button>
+          </div>
+
         </form>
+
       </div>
+    </div>
+  </div>
+
+  <!-- Loader -->
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border m-5" role="status" id="loader">
     </div>
   </div>
 
@@ -98,30 +123,30 @@
       </table>
   </div>
     
+
   <!-- Footer -->
   <footer class="container-fluid mt-5 bg-dark footerDown">
     <div class="container">
       <div class="row">
           <div class="col-3 bg-dark socialFooter">
-                  <i class="bi bi-facebook redSocial"></i>
+                  <a href="https://www.facebook.com/LaLiga"><i class="bi bi-facebook redSocial"></i></a>
               </div>
               <div class="col-3 bg-dark socialFooter">
-                  <i class="bi bi-instagram redSocial"></i>
+                  <a href="https://www.instagram.com/laliga/"><i class="bi bi-instagram redSocial"></i></a>
               </div>
               <div class="col-3 bg-dark socialFooter">
-                  <i class="bi bi-linkedin redSocial"></i>
+                  <a href="https://www.linkedin.com/company/laliga/"><i class="bi bi-linkedin redSocial"></i></a>
               </div>
               <div class="col-3 bg-dark socialFooter">
-                  <i class="bi bi-github redSocial"></i>
+                  <a href="https://github.com/JorgeeeCerdan"><i class="bi bi-github redSocial"></i></a>
               </div>
               </div>
           </div>
       </div>
   </footer>
 
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-  <script src="/scripts/dataMatches.js"></script>
-  <script src="/scripts/dataStandings.js"></script>
   <script src="/scripts/matches.js" ></script>
 </body>
 </html>

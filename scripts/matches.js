@@ -1,12 +1,32 @@
-let matches = dataMatches.matches;
-nuevaTabla(matches);
+dataMatches()
 
-let buscarEquipo = document.getElementById("buscarEquipo");
-buscarEquipo.addEventListener("click", function(e){
-    e.preventDefault()
-    filtroBuscar(matches);
-});
+function dataMatches(){
+    const url = "https://api.football-data.org/v2/competitions/2014/matches";
+    fetch(url,{
+        method: "GET",
+        headers:{
+        "X-Auth-Token":"ed78a9ec730f4a56b3c1b1d295f847ba"
+        }
+    }).then(response => {
+        if(response.ok) return response.json();
+    }).then(data => {
+        let loader = document.getElementById("loader");
+        loader.style.display = "none";
+        
+        data = data.matches;
+        console.log(data)
+        crearTablaPartidos(data)
 
+        let buscarEquipo = document.getElementById("buscarEquipo");
+        buscarEquipo.addEventListener("click", function(e){
+            e.preventDefault()
+            filtroBuscar(data);
+        })
+
+    }).catch(error =>{
+        console.log(error)
+    })
+}
 
 function filtroBuscar(matches){
 
@@ -14,20 +34,21 @@ function filtroBuscar(matches){
     let radioEstado = document.querySelector("input[name=estadoPartido]:checked");
     let alertText = document.getElementById("alertText");
     let alertStatus = document.getElementById("alertStatus");
-
+    
     if(inputEscrito == ""){
         alertText.style.display = "block";
-        nuevaTabla(matches)
+        crearTablaPartidos(matches)
         return 
     }
-
+    
     let datosFiltrados = matches.filter(element => {
         return inputEscrito == element.homeTeam.name || inputEscrito == element.awayTeam.name;
     })
+    
 
     if(radioEstado == null){
         alertStatus.style.display = "block";
-        nuevaTabla(datosFiltrados)
+        crearTablaPartidos(datosFiltrados)
         return 
     }
 
@@ -59,12 +80,22 @@ function filtroBuscar(matches){
         }
     })
 
+    let borrarPeticion = document.getElementById("borrarPeticion");
+    borrarPeticion.addEventListener("click", function(){
+        let inputEscrito = document.getElementById("textoBuscar");
+        inputEscrito.value = "";
+        alertText.style.display = "none";
+        alertText.style.display = "none";
+        radioEstado.checked = false;
+        crearTablaPartidos(matches)
+    })
+
     console.log(filtrarEquipos)
-    nuevaTabla(filtrarEquipos);
+    crearTablaPartidos(filtrarEquipos);
 };
 
 
-function nuevaTabla(partidos){
+function crearTablaPartidos(matches){
 
     let tbody = document.getElementById("tbody");
     tbody.innerHTML = "";
@@ -74,38 +105,38 @@ function nuevaTabla(partidos){
 
         let escudoLocal = document.createElement("img");
         escudoLocal.classList.add("escudoId");
-        escudoLocal.setAttribute("src","https://crests.football-data.org/" + partidos[i].homeTeam.id + ".svg");
+        escudoLocal.setAttribute("src","https://crests.football-data.org/" + matches[i].homeTeam.id + ".svg");
         escudoLocal.setAttribute("alt","Logo Equipo");
         
         let escudoVisitante = document.createElement("img");
         escudoVisitante.classList.add("escudoId");
-        escudoVisitante.setAttribute("src","https://crests.football-data.org/" + partidos[i].awayTeam.id + ".svg");
+        escudoVisitante.setAttribute("src","https://crests.football-data.org/" + matches[i].awayTeam.id + ".svg");
         escudoVisitante.setAttribute("alt","Logo Equipo");
 
-        let fechaPartidos = new Date (partidos[i].utcDate);
+        let fechaPartidos = new Date (matches[i].utcDate);
 
-        let resultados = partidos[i].score.fullTime.homeTeam + " - " + partidos[i].score.fullTime.awayTeam;
-        if(resultados === "null - null"){
-            resultados = "Aplazado";
-        }else{
-            resultados.textContent = partidos[i].score.fullTime.homeTeam + " - " + partidos[i].score.fullTime.awayTeam;
-        }
+        let resultados = matches[i].score.fullTime.homeTeam + " - " + matches[i].score.fullTime.awayTeam;
+            if(resultados === "null - null"){
+                resultados = "Aplazado";
+            }else{
+                resultados.textContent = matches[i].score.fullTime.homeTeam + " - " + matches[i].score.fullTime.awayTeam;
+            }
 
         let datosPartidos = [
             fechaPartidos.toLocaleDateString(),
             escudoLocal,
-            partidos[i].homeTeam.name,
+            matches[i].homeTeam.name,
             escudoVisitante,
-            partidos[i].awayTeam.name,
+            matches[i].awayTeam.name,
             resultados,
         ]
 
-        for(let j = 0; j < datosPartidos.length; j++){
-            let td = document.createElement("td");
-            td.append(datosPartidos[j])
-            tr.appendChild(td)
+        datosPartidos.forEach(partidosTabla =>{
+            let td = document.createElement("td");  
+            td.append(partidosTabla)    
+            tr.appendChild(td)          
             tbody.appendChild(tr)
-        }
+        })        
     }
 };
 

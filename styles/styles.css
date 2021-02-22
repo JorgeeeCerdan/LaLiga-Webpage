@@ -1,6 +1,4 @@
-
 /* Reset ---------------------------- */
-
 *{
     padding: 0px;
     margin: 0px;
@@ -88,4 +86,8 @@ input[type="text"] {
 }
 #alertStatus{
     display: none;
+}
+
+#loader{
+    display: block;
 }
