@@ -31,7 +31,7 @@
             <a class="nav-link" href="matches.html">| Partidos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="resultados.html">| Resultados</a>
+            <a class="nav-link" href="stats.html">| Estadisticas</a>
           </li>
         </ul>
     </div>
@@ -41,10 +41,16 @@
   <div class="container mt-4">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-        <li class="breadcrumb-item"><a href="#">Clasificación</a></li>
+        <li class="breadcrumb-item">Inicio</li>
+        <li class="breadcrumb-item">Clasificación</li>
       </ol>
     </nav>
+  </div>
+
+  <!-- Loader -->
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border m-5" role="status" id="loader">
+    </div>
   </div>
 
   <!-- Tabla -->
@@ -63,10 +69,33 @@
                   <th>GF</th>
                   <th>GC</th>
                   <th>DG</th>
+                  <th>Ultimos 5 partidos</th>
               </tr>
           </thead>
           <tbody></tbody>
       </table>
+  </div>
+
+  <div class="container-fluid">
+    <div class="container">
+      <div class="row pt-3">
+          <div class="text-center col-sm-12 col-md-6 col-lg-4">
+            <p><b>Leyenda: ⚽</b></p>
+          </div>
+          <div class="text-center col-sm-12 col-md-6 col-lg-2">
+            <p><b>Pnts: </b>Puntos</p>
+          </div>
+          <div class="text-center col-sm-12 col-md-6 col-lg-2">
+            <p><b>GF: </b>Goles a favor</p>
+          </div>
+          <div class="text-center col-sm-12 col-md-6 col-lg-2">
+            <p><b>GC: </b>Goles en contra</p>
+          </div>
+          <div class="text-center col-sm-12 col-md-6 col-lg-2">
+            <p><b>DG: </b>Diferencia de goles</p>
+          </div>
+      </div>
+    </div>
   </div>
 
   <!-- Footer -->
@@ -74,16 +103,16 @@
     <div class="container">
       <div class="row">
           <div class="col-3 bg-dark socialFooter">
-                  <i class="bi bi-facebook redSocial"></i>
+                  <a href="https://www.facebook.com/LaLiga"><i class="bi bi-facebook redSocial"></i></a>
               </div>
               <div class="col-3 bg-dark socialFooter">
-                  <i class="bi bi-instagram redSocial"></i>
+                  <a href="https://www.instagram.com/laliga/"><i class="bi bi-instagram redSocial"></i></a>
               </div>
               <div class="col-3 bg-dark socialFooter">
-                  <i class="bi bi-linkedin redSocial"></i>
+                  <a href="https://www.linkedin.com/company/laliga/"><i class="bi bi-linkedin redSocial"></i></a>
               </div>
               <div class="col-3 bg-dark socialFooter">
-                  <i class="bi bi-github redSocial"></i>
+                  <a href="https://github.com/JorgeeeCerdan"><i class="bi bi-github redSocial"></i></a>
               </div>
               </div>
           </div>
@@ -91,9 +120,6 @@
   </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-    <script src="/scripts/dataMatches.js"></script>
-    <script src="/scripts/dataStandings.js"></script>
     <script src="/scripts/standings.js" ></script>
-    <script src="/scripts/fetchStandings.js"></script>
 </body>
 </html>

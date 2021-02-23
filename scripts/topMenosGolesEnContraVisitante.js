@@ -1,7 +1,6 @@
 // TABLA MENOS GOLES EN CONTRA COMO VISITANTE
-dataMayorMediaGoles(dataMatches.matches);
 
-function dataMayorMediaGoles(partidos){
+function visitantesMenosGoleados(partidos){
     let estadisticas = [];
 
     for(let i = 0; i < partidos.length; i++){
@@ -11,20 +10,16 @@ function dataMayorMediaGoles(partidos){
             continue
         }
 
-        // let equipoHomeId = partidos[i].homeTeam.id;
-        // let equipoHomeName = partidos[i].homeTeam.name;
         let equipoHomeGoals = partidos[i].score.fullTime.homeTeam;
         let equipoAwayId = partidos[i].awayTeam.id;
         let equipoAwayName = partidos[i].awayTeam.name;
-        // let equipoAwayGoals = partidos[i].score.fullTime.awayTeam;   
 
-        // Equipo visitante
         let awayTeamEncontrado;
-        for(let j = 0; j < estadisticas.length; j++){
-            if(estadisticas[j].id === equipoAwayId){
-                awayTeamEncontrado = estadisticas[j]
+        estadisticas.forEach(visitanteEncontrado =>{
+            if(visitanteEncontrado.id === equipoAwayId){
+                awayTeamEncontrado = visitanteEncontrado
             }
-        }
+        })
 
         if(awayTeamEncontrado == undefined){
             estadisticas.push({
@@ -38,9 +33,8 @@ function dataMayorMediaGoles(partidos){
             awayTeamEncontrado.goals += equipoHomeGoals;
         }
     }
+    
     estadisticas.sort((a,b) => a.goals - b.goals);
-    console.log(estadisticas)
-
     tablaMenosGolesEnContraVisitante(estadisticas)
 }
 
@@ -48,29 +42,28 @@ function tablaMenosGolesEnContraVisitante(estadisticas){
     let tablaMenosGolesEnContraComoVisitante = document.getElementById("tablaMenosGolesEnContraComoVisitante");
     let estadisticasTop5 = estadisticas.slice(0, 5);
 
-    
-    for(let t = 0; t < estadisticasTop5.length; t++){
+    estadisticasTop5.forEach(estadisticasMenosGoleados =>{
         const tr = document.createElement("tr");
-        
+
         let imgEscudo = document.createElement("img")
-        imgEscudo.setAttribute("src", "https://crests.football-data.org/" + estadisticasTop5[t].id + ".svg");
+        imgEscudo.setAttribute("src", "https://crests.football-data.org/" + estadisticasMenosGoleados.id + ".svg");
         imgEscudo.classList.add("escudoId");
-        
-
+    
         let datosTabla = [
-            estadisticasTop5[t].name,
             imgEscudo,
-            estadisticasTop5[t].matches,
-            estadisticasTop5[t].goals,
+            estadisticasMenosGoleados.name,
+            estadisticasMenosGoleados.matches,
+            estadisticasMenosGoleados.goals,
         ]
-        console.log(datosTabla)
 
-        for(let r = 0; r < datosTabla.length; r++){
+        datosTabla.forEach(topCincoMenosGoleados =>{
             let td = document.createElement("td");
-            td.append(datosTabla[r]);
+            td.append(topCincoMenosGoleados);
             tr.appendChild(td);
             tablaMenosGolesEnContraComoVisitante.appendChild(tr);
-        }
-    }
+
+        })
+    })
+    
 }
 

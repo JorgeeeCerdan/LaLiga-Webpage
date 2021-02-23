@@ -1,6 +1,4 @@
-
 /* Reset ---------------------------- */
-
 *{
     padding: 0px;
     margin: 0px;
@@ -28,13 +26,14 @@
 .table{
     margin: 20px auto;
     font-family: var(--fuenteLiga);
-    border: 5px solid var(--negroLiga);
     border-collapse: collapse;
 }
 
 
 thead{
     background-color: var(--negroLiga);
+    border-left: 5px solid var(--negroLiga);
+
 }
 
 th{
@@ -88,4 +87,8 @@ input[type="text"] {
 }
 #alertStatus{
     display: none;
+}
+
+#loader{
+    display: block;
 }

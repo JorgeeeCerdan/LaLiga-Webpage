@@ -1,7 +1,32 @@
 // TOP 5 EQUIPOS CON MAYOR MEDIA DE GOLES POR PARTIDO
-dataMayorMediaGoles(dataMatches.matches);
 
-function dataMayorMediaGoles(partidos){
+dataTopGoles()
+function dataTopGoles(){
+    const url = "https://api.football-data.org/v2/competitions/2014/matches"
+
+    fetch(url,{
+        method : "GET",
+        headers : {
+            "X-Auth-Token" : "ed78a9ec730f4a56b3c1b1d295f847ba"
+        }
+    }).then(response => {
+        if(response.ok) return response.json();
+    }).then(data => {
+        let loaderUno = document.getElementById("loaderUno");
+        loaderUno.style.display = "none";
+        let loaderDos = document.getElementById("loaderDos");
+        loaderDos.style.display = "none";
+        
+        data = data.matches;
+        topMediaGoles(data)
+        visitantesMenosGoleados(data)
+
+    }).catch(error =>{
+        console.log(error)
+    })
+}
+
+function topMediaGoles(partidos){
     let estadisticas = [];
 
     for(let i = 0; i < partidos.length; i++){        
@@ -9,6 +34,7 @@ function dataMayorMediaGoles(partidos){
         if(statusMatch !== "FINISHED"){
             continue
         }
+
         let equipoHomeId = partidos[i].homeTeam.id;
         let equipoHomeName = partidos[i].homeTeam.name;
         let equipoHomeGoals = partidos[i].score.fullTime.homeTeam;
@@ -17,11 +43,11 @@ function dataMayorMediaGoles(partidos){
         let equipoAwayGoals = partidos[i].score.fullTime.awayTeam;   
 
         let homeTeamEncontrado;
-        for(let j = 0; j < estadisticas.length; j++){
-            if(estadisticas[j].id === equipoHomeId){
-                homeTeamEncontrado = estadisticas[j]
+        estadisticas.forEach(localEncontrado =>{
+            if(localEncontrado.id === equipoHomeId){
+                homeTeamEncontrado = localEncontrado
             }
-        }
+        })
 
         if(homeTeamEncontrado == undefined){
             estadisticas.push({
@@ -36,11 +62,11 @@ function dataMayorMediaGoles(partidos){
         }
 
         let awayTeamEncontrado;
-        for(let j = 0; j < estadisticas.length; j++){
-            if(estadisticas[j].id === equipoAwayId){
-                awayTeamEncontrado = estadisticas[j]
+        estadisticas.forEach( visitanteEncontrado =>{
+            if(visitanteEncontrado.id === equipoAwayId){
+                awayTeamEncontrado = visitanteEncontrado
             }
-        }
+        })
 
         if(awayTeamEncontrado == undefined){
             estadisticas.push({
@@ -55,40 +81,45 @@ function dataMayorMediaGoles(partidos){
         }
     }
 
-    for(let k = 0; k < estadisticas.length; k++){
-        let media = estadisticas[k].goals / estadisticas[k].matches;
+    estadisticas.forEach(estadisticasMedia =>{
+        let media = estadisticasMedia.goals / estadisticasMedia.matches;
         let mediaObjeto = {
             avg: media.toFixed(3)
         }
-        Object.assign(estadisticas[k], mediaObjeto)
-        // a es mayor, b es menor. Por lo tanto b.avg - a.avg 
-        // Ordena de menor a mayor
+        Object.assign(estadisticasMedia, mediaObjeto)
         estadisticas.sort((a,b) => b.avg - a.avg)
-    }
+    })
 
-    // console.log(estadisticas)
     tablaMayorMediaGoles(estadisticas)
 }
+
+
 
 function tablaMayorMediaGoles(estadisticas){
     let tablaMayorMediaGoles = document.getElementById("tablaResultadosGoles");
     let estadisticasTop5 = estadisticas.slice(0, 5);
 
-    for(let t = 0; t < estadisticasTop5.length; t++){
+    estadisticasTop5.forEach(topCincoMedia => {
         const tr = document.createElement("tr");
-
+        
+        let imgEscudo = document.createElement("img")
+        imgEscudo.setAttribute("src", "https://crests.football-data.org/" + topCincoMedia.id + ".svg");
+        imgEscudo.classList.add("escudoId");
+    
         let datosTabla = [
-            estadisticasTop5[t].name,
-            estadisticasTop5[t].goals,
-            estadisticasTop5[t].matches,
-            estadisticasTop5[t].avg,
+            imgEscudo,
+            topCincoMedia.name,
+            topCincoMedia.goals,
+            topCincoMedia.matches,
+            topCincoMedia.avg,
         ]
 
-        for(let r = 0; r < datosTabla.length; r++){
+        datosTabla.forEach(mayorMedia =>{
             let td = document.createElement("td");
-            td.append(datosTabla[r]);
+            td.append(mayorMedia);
             tr.appendChild(td);
-            tablaMayorMediaGoles.appendChild(tr);
-        }
-    }
+            tablaMayorMediaGoles.appendChild(tr);  
+        })
+    })
+
 }
