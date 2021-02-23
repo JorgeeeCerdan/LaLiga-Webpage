@@ -14,7 +14,6 @@ function dataMatches(){
         loader.style.display = "none";
         
         data = data.matches;
-        console.log(data)
         crearTablaPartidos(data)
 
         let buscarEquipo = document.getElementById("buscarEquipo");

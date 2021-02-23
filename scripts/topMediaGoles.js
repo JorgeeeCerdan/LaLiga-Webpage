@@ -105,7 +105,6 @@ function tablaMayorMediaGoles(estadisticas){
         let imgEscudo = document.createElement("img")
         imgEscudo.setAttribute("src", "https://crests.football-data.org/" + topCincoMedia.id + ".svg");
         imgEscudo.classList.add("escudoId");
-        console.log(imgEscudo);
     
         let datosTabla = [
             imgEscudo,
