@@ -80,7 +80,7 @@ HTML, CSS3, Boostrap 5 (Framework), Vanilla Javascript, Json, Git, Github.
 
 ## Versiones
 
-- v.1.0 Clasificación, partidos, estadisticas.(22/02/2021)
+- v.1.0 Clasificación, partidos, estadisticas.(23/02/2021)
 - v.1.1 Destacar los puestos de Champions League, Europa League, media tabla, puestos de descenso. (23/02/2021)
 
 ---	
@@ -88,4 +88,9 @@ HTML, CSS3, Boostrap 5 (Framework), Vanilla Javascript, Json, Git, Github.
 ## TODO
 
 - (En proceso) Añadir ligas extranjeras.
-- Articulos de futbol para la index.html
+- Buscar por texto escrito en el input field de resultados aunque no este todo el nombre del equipo completo.
+- Conectar con una API de articulos de futbol para la index.html
+- Iconos de la libreria de Bootsrap 5 para los ultimos 5 partidos.
+- Poner más titulos antes de las tablas.
+- ¿Dar opción a ordenar por jornadas?
+- Más leyendas

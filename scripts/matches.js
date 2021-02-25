@@ -89,7 +89,6 @@ function filtroBuscar(matches){
         crearTablaPartidos(matches)
     })
 
-    console.log(filtrarEquipos)
     crearTablaPartidos(filtrarEquipos);
 };
 
