@@ -29,8 +29,8 @@ function visitantesMenosGoleados(partidos){
                 matches: 1
             })
         }else{
-            awayTeamEncontrado.matches++
             awayTeamEncontrado.goals += equipoHomeGoals;
+            awayTeamEncontrado.matches++
         }
     }
     
