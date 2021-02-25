@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/styles/styles.css">
-    <title>LaLiga Webpage - Clasificación</title>
+    <title>LaLiga Webpage - Estadisticas</title>
 </head>
 <body>
 
@@ -21,7 +21,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-          <li class="nav-item ">
+          <li class="nav-item">
             <a class="nav-link" href="index.html">| Inicio</a>
           </li>
           <li class="nav-item">
@@ -42,61 +42,54 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item">Inicio</li>
-        <li class="breadcrumb-item">Clasificación</li>
+        <li class="breadcrumb-item">Estadisticas</li>
       </ol>
     </nav>
   </div>
 
   <!-- Loader -->
   <div class="d-flex justify-content-center">
-    <div class="spinner-border m-5" role="status" id="loader">
+    <div class="spinner-border m-5" role="status" id="loaderUno">
     </div>
   </div>
 
-  <!-- Tabla -->
-  <div class="container table-responsive">
-    <h2 class="h2 text-center font-weight-bold">Clasificación La Liga Santander</h2>
-      <table id="tablaClasificacion" class="table">
+  <!-- Tabla top 5 Equipos Goleadores -->
+  <div class="container table-responsive mt-5 mb-2">
+    <h2 class="h2 text-center font-weight-bold">Top 5 Equipos goleadores</h2>
+      <table id="tablaResultadosGoles" class="table">
           <thead>
               <tr>
-                  <th>Posicion</th>
-                  <th>Escudo</th>
-                  <th>Equipos</th>
-                  <th>Jugados</th>
-                  <th>Ganados</th>
-                  <th>Empatados</th>
-                  <th>Perdidos</th>
-                  <th>Pnts</th>
-                  <th>GF</th>
-                  <th>GC</th>
-                  <th>DG</th>
-                  <th>Ultimos 5 partidos</th>
+                <th>Escudos</th>
+                <th>Equipos</th>
+                <th>Goles</th>
+                <th>Partidos</th>
+                <th>Media goles a favor</th>
               </tr>
           </thead>
           <tbody></tbody>
       </table>
   </div>
 
-  <div class="container-fluid">
-    <div class="container">
-      <div class="row pt-3">
-          <div class="text-center col-sm-12 col-md-6 col-lg-4">
-            <p><b>Leyenda: ⚽</b></p>
-          </div>
-          <div class="text-center col-sm-12 col-md-6 col-lg-2">
-            <p><b>Pnts: </b>Puntos</p>
-          </div>
-          <div class="text-center col-sm-12 col-md-6 col-lg-2">
-            <p><b>GF: </b>Goles a favor</p>
-          </div>
-          <div class="text-center col-sm-12 col-md-6 col-lg-2">
-            <p><b>GC: </b>Goles en contra</p>
-          </div>
-          <div class="text-center col-sm-12 col-md-6 col-lg-2">
-            <p><b>DG: </b>Diferencia de goles</p>
-          </div>
-      </div>
+  <!-- Loader -->
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border m-5" role="status" id="loaderDos">
     </div>
+  </div>
+
+  <!-- Tabla top 5 Equipos Menos Goleados -->
+  <div class="container table-responsive mt-5 mb-2">
+    <h2 class="h2 text-center">Top 5 Equipos con menos goles en contra como visitante</h2>
+      <table id="tablaMenosGolesEnContraComoVisitante" class="table">
+          <thead>
+              <tr>
+                <th>Escudo</th>
+                <th>Equipos</th>
+                <th>Partidos</th>
+                <th>Menos goles recibidos como visitante</th>
+              </tr>
+          </thead>
+          <tbody></tbody>
+      </table>
   </div>
 
   <!-- Footer -->
@@ -120,7 +113,8 @@
       </div>
   </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-    <script src="/scripts/standings.js" ></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  <script src="/scripts/topMediaGoles.js"></script>
+  <script src="/scripts/topMenosGolesEnContraVisitante.js"></script>
 </body>
 </html>

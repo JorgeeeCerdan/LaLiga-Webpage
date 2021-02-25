@@ -4,21 +4,154 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="pictures/laliga-v-negativo-monocolor-300x300.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="/styles/styles.css">
-    <title>LaLiga Webpage</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <title>LaLiga Webpage - Inicio</title>
 </head>
 <body>
-    <table id="tabla">
-        <thead>
-            <td>Fecha</td>
-            <td>Equipo local</td>
-            <td>Equipo visitante</td>
-            <td>Resultado</td>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-    <script src="/scripts/dataMatches.js"></script>
-    <script src="/scripts/matches.js" ></script>
+    
+  <!-- Nav -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a href="index.html"><img src="/pictures/laliga-h-negativo-monocolor-300x300.png" alt="logoLiga"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+          <li class="nav-item ">
+            <a class="nav-link" href="index.html">| Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="standings.html">| Clasificación</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="matches.html">| Partidos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="stats.html">| Estadisticas</a>
+          </li>
+        </ul>
+    </div>
+  </nav>
+
+  <!-- Migas de pan -->
+  <div class="container mt-4">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">Inicio</li>
+        <li class="breadcrumb-item">Partidos</li>
+      </ol>
+    </nav>
+  </div>
+  
+  <!-- Titulo -->
+  <div class="container">
+    <h2 class="h2 font-weight-bold text-center mt-5 mb-5">Partidos de la liga</h2>
+  </div>
+
+  <!-- Buscador -->
+  <div class="container-fluid">
+    <div class="container">
+      <!-- Alerta falta texto input -->
+      <div class="alert alert-danger text-center mb-3" id="alertText" role="alert">
+        <p><b>¡Por favor!</b> Escriba el nombre del equipo que quiera buscar.</p>
+      </div>
+
+      <!-- Formulario busqueda por filtrado -->
+      <form action="">
+        <!-- Input text Equipo a buscar -->
+          <div class="form-group col-12 text-center">
+            <label for="textoBuscar">Buscador de equipos</label>
+            <input type="text" id="textoBuscar" class="w-100 p-2 mt-1" placeholder="Escribe tu equipo" class="text-center align-center">
+          </div>
+
+          <!-- Radio buttons Estado del partido -->
+          <div class="container text-center mt-3 mb-3" role="group" aria-label="Basic radio toggle button group">
+            <!-- Ganados -->
+            <input type="radio" class="btn-check" name="estadoPartido" id="partidoGanado" value="Ganados">
+            <label class="btn btn-outline-success mt-2" for="partidoGanado">Ganados</label>
+            <!-- Empatados -->
+            <input type="radio" class="btn-check" name="estadoPartido" id="partidoEmpatado" value="Empatados">
+            <label class="btn btn-outline-warning mt-2" for="partidoEmpatado">Empatados</label>
+            <!-- Perdidos -->
+            <input type="radio" class="btn-check" name="estadoPartido" id="partidoPerdido" value="Perdidos">
+            <label class="btn btn-outline-danger mt-2" for="partidoPerdido">Perdidos</label>
+            <!-- Aplazados -->
+            <input type="radio" class="btn-check" name="estadoPartido" id="partidoAplazado" value="Aplazados">
+            <label class="btn btn-outline-primary mt-2" for="partidoAplazado">Aplazados</label>
+          </div>
+          
+          <!-- Alerta falta seleccion de estado del partido -->
+          <div class="alert alert-primary text-center mt-2" id="alertStatus" role="alert">
+            <p>A continuación le mostraremos todos los partidos del equipo elegido.<br><b>Para una busqueda más precisa, seleccione un estado del partido</b></p> 
+          </div>
+
+          <!-- Boton reset -->
+          <div class="form-group  col-sm-12 col-md-12 col-lg-12">
+            <button type="button" id="borrarPeticion" class="btn btn-link text-decoration-none text-muted w-100">Borrar busqueda</button>
+          </div>
+          
+          <!-- Boton enviar -->
+          <div class="form-group  col-sm-12 col-md-12 col-lg-12">
+            <button id="buscarEquipo" class="btn btn-dark w-100 p-2 mt-3 mb-2">Enviar petición</button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Loader -->
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border m-5" role="status" id="loader">
+    </div>
+  </div>
+
+  <!-- Tabla -->
+  <div class="container table-responsive">
+      <table id="tablaPartidos" class="table table-striped table-hover">
+          <thead>
+              <tr>
+                  <th>Fecha</th>
+                  <th>Equipo Local</th>
+                  <th></th>
+                  <th>Equipo Visitante</th>
+                  <th></th>
+                  <th>Resultado</th>
+              </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+      </table>
+  </div>
+    
+
+  <!-- Footer -->
+  <footer class="container-fluid mt-5 bg-dark footerDown">
+    <div class="container">
+      <div class="row">
+          <div class="col-3 bg-dark socialFooter">
+                  <a href="https://www.facebook.com/LaLiga"><i class="bi bi-facebook redSocial"></i></a>
+              </div>
+              <div class="col-3 bg-dark socialFooter">
+                  <a href="https://www.instagram.com/laliga/"><i class="bi bi-instagram redSocial"></i></a>
+              </div>
+              <div class="col-3 bg-dark socialFooter">
+                  <a href="https://www.linkedin.com/company/laliga/"><i class="bi bi-linkedin redSocial"></i></a>
+              </div>
+              <div class="col-3 bg-dark socialFooter">
+                  <a href="https://github.com/JorgeeeCerdan"><i class="bi bi-github redSocial"></i></a>
+              </div>
+              </div>
+          </div>
+      </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  <script src="/scripts/matches.js" ></script>
 </body>
 </html>
