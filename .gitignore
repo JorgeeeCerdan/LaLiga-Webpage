@@ -1,4 +1,6 @@
 /docs
 /json
 /scripts/oldScripts/
+/scripts/dataMatches.js
+/scripts/dataStandings.js
 /.vscode/

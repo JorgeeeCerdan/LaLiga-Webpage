@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/styles/styles.css">
-    <title>LaLiga Webpage - Resultados</title>
+    <title>LaLiga Webpage - Estadisticas</title>
 </head>
 <body>
 
@@ -31,7 +31,7 @@
             <a class="nav-link" href="matches.html">| Partidos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="resultados.html">| Resultados</a>
+            <a class="nav-link" href="stats.html">| Estadisticas</a>
           </li>
         </ul>
     </div>
@@ -41,17 +41,25 @@
   <div class="container mt-4">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-        <li class="breadcrumb-item"><a href="#">Resultados</a></li>
+        <li class="breadcrumb-item">Inicio</li>
+        <li class="breadcrumb-item">Estadisticas</li>
       </ol>
     </nav>
   </div>
 
+  <!-- Loader -->
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border m-5" role="status" id="loaderUno">
+    </div>
+  </div>
+
   <!-- Tabla top 5 Equipos Goleadores -->
-  <div class="container table-responsive">
+  <div class="container table-responsive mt-5 mb-2">
+    <h2 class="h2 text-center font-weight-bold">Top 5 Equipos goleadores</h2>
       <table id="tablaResultadosGoles" class="table">
           <thead>
               <tr>
+                <th>Escudos</th>
                 <th>Equipos</th>
                 <th>Goles</th>
                 <th>Partidos</th>
@@ -62,13 +70,20 @@
       </table>
   </div>
 
+  <!-- Loader -->
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border m-5" role="status" id="loaderDos">
+    </div>
+  </div>
+
   <!-- Tabla top 5 Equipos Menos Goleados -->
-  <div class="container table-responsive">
+  <div class="container table-responsive mt-5 mb-2">
+    <h2 class="h2 text-center">Top 5 Equipos con menos goles en contra como visitante</h2>
       <table id="tablaMenosGolesEnContraComoVisitante" class="table">
           <thead>
               <tr>
-                <th>Equipos</th>
                 <th>Escudo</th>
+                <th>Equipos</th>
                 <th>Partidos</th>
                 <th>Menos goles recibidos como visitante</th>
               </tr>
@@ -82,16 +97,16 @@
     <div class="container">
       <div class="row">
           <div class="col-3 bg-dark socialFooter">
-                  <i class="bi bi-facebook redSocial"></i>
+                  <a href="https://www.facebook.com/LaLiga"><i class="bi bi-facebook redSocial"></i></a>
               </div>
               <div class="col-3 bg-dark socialFooter">
-                  <i class="bi bi-instagram redSocial"></i>
+                  <a href="https://www.instagram.com/laliga/"><i class="bi bi-instagram redSocial"></i></a>
               </div>
               <div class="col-3 bg-dark socialFooter">
-                  <i class="bi bi-linkedin redSocial"></i>
+                  <a href="https://www.linkedin.com/company/laliga/"><i class="bi bi-linkedin redSocial"></i></a>
               </div>
               <div class="col-3 bg-dark socialFooter">
-                  <i class="bi bi-github redSocial"></i>
+                  <a href="https://github.com/JorgeeeCerdan"><i class="bi bi-github redSocial"></i></a>
               </div>
               </div>
           </div>
@@ -99,9 +114,6 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-  <script src="/scripts/dataMatches.js"></script>
-  <script src="/scripts/dataStandings.js"></script>
-  <script src="/scripts/stats.js"></script>
   <script src="/scripts/topMediaGoles.js"></script>
   <script src="/scripts/topMenosGolesEnContraVisitante.js"></script>
 </body>
