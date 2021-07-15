@@ -1,7 +1,7 @@
 dataMatches()
 
 function dataMatches(){
-    const url = "https://api.football-data.org/v2/competitions/2014/matches";
+    const url = "https://api.football-data.org/v2/competitions/2014/matches/?season=2020";
     fetch(url,{
         method: "GET",
         headers:{

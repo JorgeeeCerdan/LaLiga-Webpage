@@ -49,25 +49,25 @@ function crearTablaStandings(data){
             tr.appendChild(equipoEscudo);
 
         let lastMatches = arrayTable[i].form;
-            lastMatches = lastMatches.replace(/W/g," 🟢 ");
-            lastMatches = lastMatches.replace(/D/g," 🟡 ");
-            lastMatches = lastMatches.replace(/L/g," 🔴 ");
-            lastMatches = lastMatches.replace(/,/g,"  ");
+            // lastMatches = lastMatches.replace(/W/g," 🟢 ");
+            // lastMatches = lastMatches.replace(/D/g," 🟡 ");
+            // lastMatches = lastMatches.replace(/L/g," 🔴 ");
+            // lastMatches = lastMatches.replace(/,/g,"  ");
 
         let infotabla = arrayTable[i];
         let datosTabla= [
             infotabla.position,
             equipoEscudo,
             infotabla.team.name,
-            infotabla.playedGames,
-            infotabla.won,
-            infotabla.draw,
-            infotabla.lost,
-            infotabla.points,
-            infotabla.goalsFor,
-            infotabla.goalsAgainst,
-            infotabla.goalDifference,
-            lastMatches
+            // infotabla.playedGames,
+            // infotabla.won,
+            // infotabla.draw,
+            // infotabla.lost,
+            // infotabla.points,
+            // infotabla.goalsFor,
+            // infotabla.goalsAgainst,
+            // infotabla.goalDifference,
+            // lastMatches
         ];
 
         let promoChampions = [1,2,3];
